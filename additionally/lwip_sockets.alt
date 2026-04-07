@@ -1,0 +1,391 @@
+unit lwip_sockets;
+
+{$mode objfpc}{$H+}
+{$ifdef fpc}{$PACKRECORDS C}{$endif}
+
+interface
+
+uses
+  SysUtils, lwip_opt, lwip_ip_addr, lwip_netif, lwip_err, lwip_inet;
+
+{$IFDEF LWIP_SOCKET}  // nur wenn LWIP_SOCKET aktiviert ist
+
+type
+  {$ifndef SA_FAMILY_T_DEFINED}
+  sa_family_t = Byte;
+  {$endif}
+
+  {$ifndef IN_PORT_T_DEFINED}
+  in_port_t = Word;
+  {$endif}
+
+{$IFDEF LWIP_IPV4}
+  sockaddr_in = packed record
+    sin_len: Byte;
+    sin_family: sa_family_t;
+    sin_port: in_port_t;
+    sin_addr: in_addr;
+    sin_zero: array[0..7] of AnsiChar;
+  end;
+{$ENDIF}
+
+{$IFDEF LWIP_IPV6}
+  sockaddr_in6 = packed record
+    sin6_len: Byte;
+    sin6_family: sa_family_t;
+    sin6_port: in_port_t;
+    sin6_flowinfo: LongWord;
+    sin6_addr: in6_addr;
+    sin6_scope_id: LongWord;
+  end;
+{$ENDIF}
+
+  sockaddr = packed record
+    sa_len: Byte;
+    sa_family: sa_family_t;
+    sa_data: array[0..13] of AnsiChar;
+  end;
+
+  sockaddr_storage = packed record
+    s2_len: Byte;
+    ss_family: sa_family_t;
+    s2_data1: array[0..1] of AnsiChar;
+    s2_data2: array[0..2] of LongWord;
+{$IFDEF LWIP_IPV6}
+    s2_data3: array[0..2] of LongWord;
+{$ENDIF}
+  end;
+
+  {$ifndef SOCKLEN_T_DEFINED}
+  socklen_t = LongWord;
+  {$endif}
+
+const
+  IOV_MAX = $FFFF;
+
+type
+  iovec = record
+    iov_base: Pointer;
+    iov_len: NativeUInt;
+  end;
+
+  msghdr = record
+    msg_name: Pointer;
+    msg_namelen: socklen_t;
+    msg_iov: ^iovec;
+    msg_iovlen: Integer;
+    msg_control: Pointer;
+    msg_controllen: socklen_t;
+    msg_flags: Integer;
+  end;
+
+const
+  MSG_TRUNC = $04;
+  MSG_CTRUNC = $08;
+
+type
+  cmsghdr = record
+    cmsg_len: socklen_t;
+    cmsg_level: Integer;
+    cmsg_type: Integer;
+  end;
+
+function CMSG_FIRSTHDR(mhdr: ^msghdr): ^cmsghdr;
+function CMSG_NXTHDR(mhdr: ^msghdr; cmsg: ^cmsghdr): ^cmsghdr;
+function CMSG_DATA(cmsg: ^cmsghdr): Pointer;
+function CMSG_SPACE(length: NativeUInt): NativeUInt;
+function CMSG_LEN(length: NativeUInt): NativeUInt;
+
+const
+  IFNAMSIZ = NETIF_NAMESIZE;
+
+type
+  ifreq = record
+    ifr_name: array[0..IFNAMSIZ-1] of AnsiChar;
+  end;
+
+// Socket Typen
+const
+  SOCK_STREAM = 1;
+  SOCK_DGRAM  = 2;
+  SOCK_RAW    = 3;
+
+// Socket Optionen
+const
+  SO_REUSEADDR   = $0004;
+  SO_KEEPALIVE   = $0008;
+  SO_BROADCAST   = $0020;
+  SO_DEBUG       = $0001;
+  SO_ACCEPTCONN  = $0002;
+  SO_DONTROUTE   = $0010;
+  SO_USELOOPBACK = $0040;
+  SO_LINGER      = $0080;
+  SO_DONTLINGER  = not SO_LINGER;
+  SO_OOBINLINE   = $0100;
+  SO_REUSEPORT   = $0200;
+  SO_SNDBUF      = $1001;
+  SO_RCVBUF      = $1002;
+  SO_SNDTIMEO    = $1005;
+  SO_RCVTIMEO    = $1006;
+  SO_ERROR       = $1007;
+  SO_TYPE        = $1008;
+  SO_BINDTODEVICE= $100B;
+
+// Linger Struktur
+type
+  linger = record
+    l_onoff: Integer;
+    l_linger: Integer;
+  end;
+
+const
+  SOL_SOCKET = $FFF;
+
+// Adressfamilien
+const
+  AF_UNSPEC = 0;
+  AF_INET   = 2;
+{$IFDEF LWIP_IPV6}
+  AF_INET6  = 10;
+{$ELSE}
+  AF_INET6  = AF_UNSPEC;
+{$ENDIF}
+  PF_INET   = AF_INET;
+  PF_INET6  = AF_INET6;
+  PF_UNSPEC = AF_UNSPEC;
+
+// Protokolle
+const
+  IPPROTO_IP      = 0;
+  IPPROTO_ICMP    = 1;
+  IPPROTO_TCP     = 6;
+  IPPROTO_UDP     = 17;
+{$IFDEF LWIP_IPV6}
+  IPPROTO_IPV6    = 41;
+  IPPROTO_ICMPV6  = 58;
+{$ENDIF}
+  IPPROTO_UDPLITE = 136;
+  IPPROTO_RAW     = 255;
+
+// Flags für send/recv
+const
+  MSG_PEEK      = $01;
+  MSG_WAITALL   = $02;
+  MSG_OOB       = $04;
+  MSG_DONTWAIT  = $08;
+  MSG_MORE      = $10;
+  MSG_NOSIGNAL  = $20;
+
+{$ENDIF} // LWIP_SOCKET
+
+implementation
+
+function ALIGN_H(size: NativeUInt): NativeUInt;
+begin
+  Result := (size + SizeOf(LongWord) - 1) and not (SizeOf(LongWord)-1);
+end;
+
+function ALIGN_D(size: NativeUInt): NativeUInt;
+begin
+  Result := ALIGN_H(size);
+end;
+
+function CMSG_FIRSTHDR(mhdr: ^msghdr): ^cmsghdr;
+begin
+  if (mhdr^.msg_controllen >= SizeOf(cmsghdr)) then
+    Result := cmsghdr(mhdr^.msg_control)
+  else
+    Result := nil;
+end;
+
+function CMSG_NXTHDR(mhdr: ^msghdr; cmsg: ^cmsghdr): ^cmsghdr;
+var
+  nextPtr: PByte;
+begin
+  if cmsg = nil then
+    Exit(CMSG_FIRSTHDR(mhdr));
+
+  nextPtr := PByte(cmsg) + ALIGN_H(cmsg^.cmsg_len) + ALIGN_D(SizeOf(cmsghdr));
+  if nextPtr > PByte(mhdr^.msg_control) + mhdr^.msg_controllen then
+    Result := nil
+  else
+    Result := ^cmsghdr(nextPtr);
+end;
+
+function CMSG_DATA(cmsg: ^cmsghdr): Pointer;
+begin
+  Result := PByte(cmsg) + ALIGN_D(SizeOf(cmsghdr));
+end;
+
+function CMSG_SPACE(length: NativeUInt): NativeUInt;
+begin
+  Result := ALIGN_D(SizeOf(cmsghdr)) + ALIGN_H(length);
+end;
+
+function CMSG_LEN(length: NativeUInt): NativeUInt;
+begin
+  Result := ALIGN_D(SizeOf(cmsghdr)) + length;
+end;
+
+{ IP Type of Service (TOS) }
+const
+  IPTOS_TOS_MASK       = $1E;
+  IPTOS_LOWDELAY       = $10;
+  IPTOS_THROUGHPUT     = $08;
+  IPTOS_RELIABILITY    = $04;
+  IPTOS_LOWCOST        = $02;
+  IPTOS_MINCOST        = IPTOS_LOWCOST;
+
+function IPTOS_TOS(tos: Byte): Byte; inline;
+function IPTOS_PREC(tos: Byte): Byte; inline;
+
+const
+  IPTOS_PREC_MASK             = $E0;
+  IPTOS_PREC_NETCONTROL       = $E0;
+  IPTOS_PREC_INTERNETCONTROL  = $C0;
+  IPTOS_PREC_CRITIC_ECP       = $A0;
+  IPTOS_PREC_FLASHOVERRIDE    = $80;
+  IPTOS_PREC_FLASH            = $60;
+  IPTOS_PREC_IMMEDIATE        = $40;
+  IPTOS_PREC_PRIORITY         = $20;
+  IPTOS_PREC_ROUTINE          = $00;
+
+{ IOCTL Commands }
+const
+  IOCPARM_MASK = $7F;
+  IOC_VOID     = $20000000;
+  IOC_OUT      = $40000000;
+  IOC_IN       = $80000000;
+  IOC_INOUT    = IOC_IN or IOC_OUT;
+
+function _IO(x, y: LongInt): LongInt; inline;
+function _IOR(x, y: LongInt; tSize: NativeUInt): LongInt; inline;
+function _IOW(x, y: LongInt; tSize: NativeUInt): LongInt; inline;
+
+const
+  FIONREAD = {$ifdef FPC}_IOR(Ord('f'), 127, SizeOf(LongWord)){$else}0{$endif};
+  FIONBIO  = {$ifdef FPC}_IOW(Ord('f'), 126, SizeOf(LongWord)){$else}0{$endif};
+
+{ Socket I/O unimplemented commands }
+const
+  SIOCSHIWAT = _IOW(Ord('s'), 0, SizeOf(LongWord));
+  SIOCGHIWAT = _IOR(Ord('s'), 1, SizeOf(LongWord));
+  SIOCSLOWAT = _IOW(Ord('s'), 2, SizeOf(LongWord));
+  SIOCGLOWAT = _IOR(Ord('s'), 3, SizeOf(LongWord));
+  SIOCATMARK = _IOR(Ord('s'), 7, SizeOf(LongWord));
+
+{ fcntl flags }
+const
+  F_GETFL = 3;
+  F_SETFL = 4;
+
+  O_NONBLOCK = 1;
+  O_NDELAY   = O_NONBLOCK;
+  O_RDONLY   = 2;
+  O_WRONLY   = 4;
+  O_RDWR     = O_RDONLY or O_WRONLY;
+
+  SHUT_RD    = 0;
+  SHUT_WR    = 1;
+  SHUT_RDWR  = 2;
+
+{ Poll events }
+const
+  POLLIN     = $01;
+  POLLOUT    = $02;
+  POLLERR    = $04;
+  POLLNVAL   = $08;
+  POLLRDNORM = $10;
+  POLLRDBAND = $20;
+  POLLPRI    = $40;
+  POLLWRNORM = $80;
+  POLLWRBAND = $100;
+  POLLHUP    = $200;
+
+{ timeval if LWIP_TIMEVAL_PRIVATE }
+type
+  timeval = record
+    tv_sec: LongInt;
+    tv_usec: LongInt;
+  end;
+
+{ FD_SET for lwip_select }
+type
+  fd_set = record
+    fd_bits: array[0..(FD_SETSIZE + 7) div 8 - 1] of Byte;
+  end;
+
+procedure FD_ZERO(var set_: fd_set);
+procedure FD_SET(n: Integer; var set_: fd_set);
+procedure FD_CLR(n: Integer; var set_: fd_set);
+function  FD_ISSET(n: Integer; var set_: fd_set): Boolean;
+
+{ lwIP Socket functions declarations }
+function lwip_accept(s: Integer; addr: PSockAddr; addrlen: Psocklen_t): Integer; cdecl;
+function lwip_bind(s: Integer; const name: PSockAddr; namelen: socklen_t): Integer; cdecl;
+function lwip_shutdown(s: Integer; how: Integer): Integer; cdecl;
+function lwip_getpeername(s: Integer; name: PSockAddr; namelen: Psocklen_t): Integer; cdecl;
+function lwip_getsockname(s: Integer; name: PSockAddr; namelen: Psocklen_t): Integer; cdecl;
+function lwip_setsockopt(s, level, optname: Integer; const optval: Pointer; optlen: socklen_t): Integer; cdecl;
+function lwip_getsockopt(s, level, optname: Integer; optval: Pointer; optlen: Psocklen_t): Integer; cdecl;
+function lwip_close(s: Integer): Integer; cdecl;
+function lwip_connect(s: Integer; const name: PSockAddr; namelen: socklen_t): Integer; cdecl;
+function lwip_listen(s: Integer; backlog: Integer): Integer; cdecl;
+function lwip_recv(s: Integer; mem: Pointer; len: NativeUInt; flags: Integer): NativeInt; cdecl;
+function lwip_send(s: Integer; const dataptr: Pointer; size: NativeUInt; flags: Integer): NativeInt; cdecl;
+function lwip_socket(domain, socktype, protocol: Integer): Integer; cdecl;
+
+implementation
+
+function IPTOS_TOS(tos: Byte): Byte; inline;
+begin
+  Result := tos and IPTOS_TOS_MASK;
+end;
+
+function IPTOS_PREC(tos: Byte): Byte; inline;
+begin
+  Result := tos and IPTOS_PREC_MASK;
+end;
+
+function _IO(x, y: LongInt): LongInt; inline;
+begin
+  Result := IOC_VOID or (x shl 8) or y;
+end;
+
+function _IOR(x, y: LongInt; tSize: NativeUInt): LongInt; inline;
+begin
+  Result := IOC_OUT or ((tSize and IOCPARM_MASK) shl 16) or (x shl 8) or y;
+end;
+
+function _IOW(x, y: LongInt; tSize: NativeUInt): LongInt; inline;
+begin
+  Result := IOC_IN or ((tSize and IOCPARM_MASK) shl 16) or (x shl 8) or y;
+end;
+
+procedure FD_ZERO(var set_: fd_set);
+begin
+  FillChar(set_, SizeOf(set_), 0);
+end;
+
+procedure FD_SET(n: Integer; var set_: fd_set);
+begin
+  if (n >= LWIP_SOCKET_OFFSET) and ((n - LWIP_SOCKET_OFFSET) < MEMP_NUM_NETCONN) then
+    set_.fd_bits[(n - LWIP_SOCKET_OFFSET) div 8] := set_.fd_bits[(n - LWIP_SOCKET_OFFSET) div 8] or (1 shl ((n - LWIP_SOCKET_OFFSET) and 7));
+end;
+
+procedure FD_CLR(n: Integer; var set_: fd_set);
+begin
+  if (n >= LWIP_SOCKET_OFFSET) and ((n - LWIP_SOCKET_OFFSET) < MEMP_NUM_NETCONN) then
+    set_.fd_bits[(n - LWIP_SOCKET_OFFSET) div 8] := set_.fd_bits[(n - LWIP_SOCKET_OFFSET) div 8] and not (1 shl ((n - LWIP_SOCKET_OFFSET) and 7));
+end;
+
+function FD_ISSET(n: Integer; var set_: fd_set): Boolean;
+begin
+  if (n >= LWIP_SOCKET_OFFSET) and ((n - LWIP_SOCKET_OFFSET) < MEMP_NUM_NETCONN) then
+    Result := (set_.fd_bits[(n - LWIP_SOCKET_OFFSET) div 8] and (1 shl ((n - LWIP_SOCKET_OFFSET) and 7))) <> 0
+  else
+    Result := False;
+end;
+
+
+end.

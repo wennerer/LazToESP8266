@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="ESP8266"/>
+    <Units>
+      <Unit>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="120"/>
+        <CursorPos X="2" Y="20"/>
+        <UsageCount Value="136"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_http_server.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="107"/>
+        <CursorPos X="18" Y="126"/>
+        <UsageCount Value="57"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/fpc-esp-freertos-master/examples/boreholepump/webserver.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="63" Y="10"/>
+        <UsageCount Value="31"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="13">
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="113" Column="5"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="92" Column="7" TopLine="88"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="113" Column="122" TopLine="102"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="144" Column="14" TopLine="121"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="23" Column="2" TopLine="9"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="13" Column="14"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="98" Column="46" TopLine="43"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="43" Column="3" TopLine="28"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="34" Column="52" TopLine="14"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="63" Column="22" TopLine="17"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="34" Column="5" TopLine="17"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="110" Column="45" TopLine="60"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="84" Column="52" TopLine="67"/>
+      </Position>
+      <Position>
+        <Filename Value="myfirsthttpserver.lpr"/>
+        <Caret Line="49" Column="14" TopLine="42"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

@@ -1,0 +1,3 @@
+#define APP_OFFSET 0x10000
+#define APP_SIZE 0xf0000
+#define CONFIG_SOC_IRAM_SIZE 0xC000

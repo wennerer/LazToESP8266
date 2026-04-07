@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="ESP8266"/>
+    <Units Count="9">
+      <Unit0>
+        <Filename Value="wifiscan.pp"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <CursorPos X="42" Y="8"/>
+        <UsageCount Value="70"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_event.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="6"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_event_legacy.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <UsageCount Value="6"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_wifi.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="52"/>
+        <UsageCount Value="6"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_wifi_types.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="144"/>
+        <CursorPos X="3" Y="149"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_interface.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="6"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_netif.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="6"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/laz_esp.pas"/>
+        <UnitName Value="Laz_ESP"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="25"/>
+        <UsageCount Value="14"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/laz_esp.pas"/>
+        <UnitName Value="Laz_ESP"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="52"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit8>
+    </Units>
+    <JumpHistory Count="20" HistoryIndex="19">
+      <Position1>
+        <Filename Value="wifiscan.pp"/>
+      </Position1>
+      <Position2>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="3" Column="2"/>
+      </Position2>
+      <Position3>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="6" Column="3"/>
+      </Position3>
+      <Position4>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="15" Column="20"/>
+      </Position4>
+      <Position5>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="17" Column="3"/>
+      </Position5>
+      <Position6>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="8" Column="10"/>
+      </Position6>
+      <Position7>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="9" Column="5"/>
+      </Position7>
+      <Position8>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="9" Column="5"/>
+      </Position8>
+      <Position9>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="18" Column="14"/>
+      </Position9>
+      <Position10>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="131" Column="7" TopLine="118"/>
+      </Position10>
+      <Position11>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="126" Column="8" TopLine="120"/>
+      </Position11>
+      <Position12>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="106" Column="4" TopLine="93"/>
+      </Position12>
+      <Position13>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="131" Column="38" TopLine="118"/>
+      </Position13>
+      <Position14>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="6" Column="66"/>
+      </Position14>
+      <Position15>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="130" Column="16" TopLine="110"/>
+      </Position15>
+      <Position16>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="102" Column="3" TopLine="88"/>
+      </Position16>
+      <Position17>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="138" Column="38" TopLine="126"/>
+      </Position17>
+      <Position18>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="155" Column="4" TopLine="133"/>
+      </Position18>
+      <Position19>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="165" Column="3"/>
+      </Position19>
+      <Position20>
+        <Filename Value="wifiscan.pp"/>
+        <Caret Line="8" Column="42"/>
+      </Position20>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

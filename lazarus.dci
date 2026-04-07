@@ -1,0 +1,387 @@
+[arrayc | array declaration (const)]
+$(AttributesStart)
+EnableMakros=true
+!FileVersion=1
+$(AttributesEnd)
+array[$Param(0)..$Param(1)] of $Param(Type) = (|);
+[arrayd | array declaration (var)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+$Param(VariableName): array[0..$Param(HighNumber)] of $Param(Type);|
+[b | begin end]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+begin
+  |
+end$AddSemicolon()
+[be | begin end else begin end]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+begin
+  |
+end else begin
+
+end$AddSemicolon()
+[bs | BoolToStr]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+BoolToStr($Param(), true)|
+[casee | case statement (with else)]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+case $Param(var) of
+  : |;
+  : ;
+else ;
+end$AddSemicolon()
+[cases | case statement]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+case $Param(var) of
+  : |;
+  : ;
+end$AddSemicolon()
+[classc | class declaration (with Create/Destroy overrides)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+$Param(ClassName) = class($Param(InheritedClass))
+private
+
+protected
+
+public
+  |
+  constructor Create; override;
+  destructor Destroy; override;
+published
+end;
+[classd | class declaration (no parts)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+$Param(ClassName) = class($Param(InheritedClass))
+  |
+end;
+[classf | class declaration (all parts)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+$Param(ClassName) = class($Param(InheritedClass))
+private
+
+public
+  |
+  constructor Create;
+  destructor Destroy; override;
+end;
+[d | debugln]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+debugln(['$ProcedureName() '|])$AddSemicolon()
+[forb | for statement]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+for $Param(CounterVar) := $Param(0) to Pred($Param(Count)) do
+begin
+  |
+end$AddSemicolon()
+[fors | for (no begin/end)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+for $Param(CounterVar) := $Param(0) to Pred($Param(Count)) do
+  |
+[fpc | Conditional FPC Mode]
+$(AttributesStart)
+RemoveChar=true
+$(AttributesEnd)
+{$IFDEF FPC}
+  {$mode objfpc}{$H+}
+{$ENDIF}
+|
+[function | function declaration]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+function $Param(Name)($Param()): $Param(Type);
+begin
+  |
+end;
+[hexc | HexStr(Cardinal(),8)]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+HexStr(PtrUInt($Param()),8)|
+[ifb | if statement]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+if $Param(Conditional) then
+begin
+  |
+end$AddSemicolon()
+[ife | if then (no begin/end) else (no begin/end)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+if $Param(Conditional) then
+  |
+else
+[ifeb | if then else]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+if $Param(Conditional) then
+begin
+  |
+end else begin
+
+end$AddSemicolon()
+[ifs | if (no begin/end)]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+if $Param(Conditional) then
+  |
+[ih | IntToHex]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+IntToHex($Param())|
+[is | IntToStr]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+IntToStr($Param())|
+[ofall | case of all enums]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+of
+|$OfAll()end$AddSemicolon()
+[pdrwd | property Double read write default]
+$(AttributesStart)
+!Version=1
+EnableMakros=true
+$(AttributesEnd)
+property $Param(Name): Double read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1) default $Param(Const);|
+[pdrws | property Double read write]
+$(AttributesStart)
+!Version=1
+EnableMakros=true
+$(AttributesEnd)
+property $Param(Name): Double read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1);|
+[pirwd | property Integer read write default]
+$(AttributesStart)
+!Version=1
+EnableMakros=true
+$(AttributesEnd)
+property $Param(Name): Integer read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1) default $Param(Const);|
+[pirws | property Integer read write]
+$(AttributesStart)
+!Version=1
+EnableMakros=true
+$(AttributesEnd)
+property $Param(Name): Integer read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1);|
+[procedure | procedure declaration]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+procedure $Param(ProcName)($Param());
+begin
+  |
+end;
+[prwd | property read write default]
+$(AttributesStart)
+!Version=1
+EnableMakros=true
+$(AttributesEnd)
+property $Param(Name) read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1) default $Param(Const);|
+[prws | property read write]
+$(AttributesStart)
+!Version=1
+EnableMakros=true
+$(AttributesEnd)
+property $Param(Name) read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1);|
+[psrw | property string read write]
+$(AttributesStart)
+!Version=1
+EnableMakros=true
+$(AttributesEnd)
+property $Param(Name): string read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1);|
+[pwd | Includedatei für Passwort einfogen]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+{$Include PWD.inc}
+
+[sb | StrToBool]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+StrToBool($Param())|
+[sbd | StrToBoolDef]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+StrToBoolDef($Param(), $Param(false))|
+[si | StrToInt()]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+StrToInt($Param())|
+[sid | StrToIntDef]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+StrToIntDef($Param(), $Param(-1))|
+[Start_Timer | erzeugt einen XTimer mit Callback für ESP8266]
+$(AttributesStart)
+EnableMakros=true
+KeepSubIndent=true
+$(AttributesEnd)
+procedure TimerCallback(xTimerHandle: TTimerHandle);
+begin
+ //to something
+end;
+
+procedure Start_Timer(out xTimerHandle: TTimerHandle;Interval:LongInt);
+begin
+ XTimerHandle := xTimerCreate('Timer1', // Name des Timers
+                              pdMS_TO_TICKS(Interval),// Periode in Ticks
+                              pdTRUE,          // pdTRUE = wiederholend, pdFALSE = einmalig
+                              nil,             // Timer-ID optional
+                              @TimerCallback);//Callback-Funktion
+
+ if xTimerHandle = nil then
+  begin
+   writeln('The timer could not be created');
+   Exit;
+  end;
+
+// Timer starten
+ if xTimerStart(xTimerHandle, 0) <> pdPASS then
+  writeln('The timer could not be started');
+end;
+
+Start_Timer(|xTimerHandle,Interval);
+
+[Stop_Timer | xTimer ESP8266 anhalten und freigeben]
+$(AttributesStart)
+EnableMakros=true
+KeepSubIndent=true
+$(AttributesEnd)
+procedure Stop_Timer(xTimerHandle: TTimerHandle);
+begin
+ if xTimerStop(xTimerHandle, 0) <> pdPASS then
+  writeln('The timer could not be stopped')
+ else
+  xTimerDelete(xTimerHandle, 0);
+end;
+
+[todo | ToDo item creator]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+{ TODO -o$Param(Author) : $Param(Note) } |
+[trycf | try finally (with Create/Free)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+$Param(VarName) := $Param(TMyClassName).Create;
+try
+  |
+finally
+  $Param(VarName,Sync=1).Free;
+end;
+[trye | try except]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+try
+  | 
+except
+
+end$AddSemicolon()
+[tryf | try finally]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+try
+  |
+finally
+  $Param(FreeStatement,default)
+end$AddSemicolon()
+[w | writeln]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+writeln('|')$AddSemicolon()
+[whileb | while statement]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+while $Param(LoopCondition) do
+begin
+  |
+end$AddSemicolon()
+[whiles | while (no begin)]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+while $Param(LoopCondition) do
+  |
+[withb | with statement]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+with $Param(Object) do
+begin
+  |
+end$AddSemicolon()
+[withc | with for components]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+with $Param(Object) do
+begin
+  Name:='$Param(NameText)';
+  Parent:=Self;
+  Left:=$Param(0);
+  Top:=$Param(0);
+  Width:=$Param(0);
+  Height:=$Param(0);
+  Caption:='$Param(CaptionText)';
+end$AddSemicolon()
+|
+[withs | with (no begin)]
+$(AttributesStart)
+EnableMakros=true
+RemoveChar=true
+$(AttributesEnd)
+with $Param(Object) do
+  |

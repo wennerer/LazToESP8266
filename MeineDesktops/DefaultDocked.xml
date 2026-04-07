@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Desktops Count="1">
+    <Desktop1 Name="default docked" DockMaster="TIDEAnchorDockMaster">
+      <Desktop Version="2" FormIdCount="33">
+        <FormIdList a1="MainIDE" a2="MessagesView" a3="SourceNotebook" a4="Assembler" a5="Watches" a6="BreakPoints" a7="Locals" a8="CallStack" a9="EvaluateModify" a10="Registers" a11="DbgOutput" a12="Inspect" a13="PseudoTerminal" a14="Threads" a15="DbgHistory" a16="MemViewer" a17="DbgEvents" a18="UnitDependencies" a19="CodeExplorerView" a20="FPDocEditor" a21="ClipBrdHistory" a22="PkgGraphExplorer" a23="ProjectInspector" a24="EditorFileManager" a25="SearchResults" a26="AnchorEditor" a27="TabOrderEditor" a28="CodeBrowser" a29="IssueBrowser" a30="JumpHistory" a31="ComponentList" a32="MacroListViewer" a33="ObjectInspectorDlg"/>
+      </Desktop>
+      <MainIDE>
+        <CustomPosition Width="320" Height="240"/>
+        <WindowState Value="Maximized"/>
+        <Visible Value="True"/>
+      </MainIDE>
+      <MessagesView>
+        <CustomPosition Left="351" Top="810" Width="1196" Height="228"/>
+        <Visible Value="True"/>
+      </MessagesView>
+      <SourceNotebook>
+        <CustomPosition Left="328" Top="152" Width="1224" Height="641"/>
+        <Visible Value="True"/>
+      </SourceNotebook>
+      <Dialogs Count="5">
+        <Dialog1>
+          <Name Value="TLazFindReplaceDialog"/>
+          <Size Width="0" Height="0"/>
+        </Dialog1>
+        <Dialog2>
+          <Name Value="TIDEOptionsDialog"/>
+          <Size Width="800" Height="500"/>
+        </Dialog2>
+        <Dialog3>
+          <Name Value="TNewOtherDialog"/>
+          <Size Width="750" Height="410"/>
+        </Dialog3>
+        <Dialog4>
+          <Name Value="TToolBarConfig"/>
+          <Size Width="696" Height="457"/>
+        </Dialog4>
+        <Dialog5>
+          <Name Value="TDesktopForm"/>
+          <Size Width="0" Height="0"/>
+        </Dialog5>
+      </Dialogs>
+      <CompletionWindowOptions>
+        <Width Value="320"/>
+      </CompletionWindowOptions>
+      <IDECoolBarOptions Count="2">
+        <Width Value="293"/>
+        <ToolBar1 Version="1" Count="14">
+          <Button1 Name="NewUnit"/>
+          <Button2 Name="NewForm"/>
+          <Button3 Name="---------------"/>
+          <Button4 Name="Open"/>
+          <Button5 Name="Save"/>
+          <Button6 Name="SaveAll"/>
+          <Button7 Name="---------------"/>
+          <Button8 Name="Toggle between Unit and Form"/>
+          <Button9 Name="---------------"/>
+          <Button10 Name="Find in files"/>
+          <Button11 Name="General environment options"/>
+          <Button12 Name="---------------"/>
+          <Button13 Name="Project Inspector"/>
+          <Button14 Name="View project options"/>
+        </ToolBar1>
+        <ToolBar2 Version="1" Count="12">
+          <Break Value="True"/>
+          <Button1 Name="View Units"/>
+          <Button2 Name="View Forms"/>
+          <Button3 Name="---------------"/>
+          <Button4 Name="Change build mode"/>
+          <Button5 Name="Run without debugging"/>
+          <Button6 Name="Run program"/>
+          <Button7 Name="Pause program"/>
+          <Button8 Name="Stop program"/>
+          <Button9 Name="Step over"/>
+          <Button10 Name="Step into"/>
+          <Button11 Name="Step out"/>
+          <Button12 Name="Compile project/program"/>
+        </ToolBar2>
+      </IDECoolBarOptions>
+      <EditorToolBarOptions Version="1" Count="4">
+        <Button1 Name="Jump to Implementation"/>
+        <Button2 Name="Jump back"/>
+        <Button3 Name="Jump forward"/>
+        <Button4 Name="---------------"/>
+      </EditorToolBarOptions>
+      <ObjectInspectorOptions>
+        <SplitterX>
+          <PropertyPage Value="110"/>
+          <EventPage Value="110"/>
+          <FavoritePage Value="110"/>
+          <RestrictedPage Value="110"/>
+        </SplitterX>
+        <ComponentTree>
+          <Height Value="160"/>
+        </ComponentTree>
+        <InfoBox>
+          <Height Value="50"/>
+        </InfoBox>
+      </ObjectInspectorOptions>
+      <AnchorDocking>
+        <Version Value="1"/>
+        <MainConfig>
+          <Nodes ChildCount="1">
+            <Item1 Name="MainIDE" Type="CustomSite" WindowState="Maximized" Monitor="0" ChildCount="1">
+              <Bounds Width="1920" Height="984">
+                <WorkArea>
+                  <Rect Right="1920" Bottom="1040"/>
+                </WorkArea>
+              </Bounds>
+              <Item1 Name="AnchorDockSite10" Type="Layout" WindowState="Maximized" Monitor="0" ChildCount="7">
+                <Bounds Top="60" Width="1920" Height="924" SplitterPos="58"/>
+                <Anchors Align="Bottom"/>
+                <Item1 Name="SourceNotebook" Type="Control" WindowState="Maximized" Monitor="0">
+                  <Bounds Left="328" Width="1224" Height="659"/>
+                  <Anchors Left="AnchorDockSplitter4" Right="AnchorDockSplitter3" Bottom="AnchorDockSplitter2"/>
+                  <Header Position="left"/>
+                </Item1>
+                <Item2 Name="AnchorDockSplitter2" Type="SplitterHorizontal" WindowState="Maximized" Monitor="0">
+                  <Bounds Left="328" Top="659" Width="1224" Height="7"/>
+                  <Anchors Left="AnchorDockSplitter4" Right="AnchorDockSplitter3"/>
+                </Item2>
+                <Item3 Name="AnchorDockSite11" Type="Pages" WindowState="Maximized" Monitor="0" ChildCount="5">
+                  <Bounds Left="328" Top="666" Width="1224" Height="258"/>
+                  <Anchors Left="AnchorDockSplitter4" Top="AnchorDockSplitter2" Right="AnchorDockSplitter3"/>
+                  <Item1 Name="MessagesView" Type="Control" WindowState="Maximized" Monitor="0">
+                    <Bounds Width="1196" Height="228"/>
+                    <Anchors Align="Client"/>
+                  </Item1>
+                  <Item2 Name="Watches" Type="Control" WindowState="Maximized" Monitor="0">
+                    <Bounds Width="1196" Height="228"/>
+                    <Anchors Align="Client"/>
+                  </Item2>
+                  <Item3 Name="SearchResults" Type="Control" WindowState="Maximized" Monitor="0">
+                    <Bounds Width="1196" Height="228"/>
+                    <Anchors Align="Client"/>
+                  </Item3>
+                  <Item4 Name="Assembler" Type="Control" WindowState="Maximized" Monitor="0">
+                    <Bounds Width="1196" Height="228"/>
+                    <Anchors Align="Client"/>
+                  </Item4>
+                  <Item5 Name="BreakPoints" Type="Control" WindowState="Maximized" Monitor="0">
+                    <Bounds Width="1196" Height="228"/>
+                    <Anchors Align="Client"/>
+                  </Item5>
+                </Item3>
+                <Item4 Name="AnchorDockSplitter3" Type="SplitterVertical" WindowState="Maximized" Monitor="0">
+                  <Bounds Left="1552" Width="9" Height="924"/>
+                </Item4>
+                <Item5 Name="AnchorDockSite12" Type="Pages" WindowState="Maximized" Monitor="0" ChildCount="2">
+                  <Bounds Left="1561" Width="359" Height="924"/>
+                  <Anchors Left="AnchorDockSplitter3"/>
+                  <Item1 Name="CodeExplorerView" Type="Control" WindowState="Maximized" Monitor="0">
+                    <Bounds Width="349" Height="876"/>
+                    <Anchors Align="Client"/>
+                  </Item1>
+                  <Item2 Name="ComponentList" Type="Control" WindowState="Maximized" Monitor="0">
+                    <Bounds Width="349" Height="876"/>
+                    <Anchors Align="Client"/>
+                  </Item2>
+                </Item5>
+                <Item6 Name="ObjectInspectorDlg" Type="Control" WindowState="Maximized" Monitor="0">
+                  <Bounds Width="324" Height="924"/>
+                  <Anchors Right="AnchorDockSplitter4"/>
+                </Item6>
+                <Item7 Name="AnchorDockSplitter4" Type="SplitterVertical" WindowState="Maximized" Monitor="0">
+                  <Bounds Left="324" Width="4" Height="924"/>
+                </Item7>
+              </Item1>
+            </Item1>
+          </Nodes>
+        </MainConfig>
+        <Settings FloatingWindowsOnTop="True"/>
+      </AnchorDocking>
+    </Desktop1>
+  </Desktops>
+</CONFIG>

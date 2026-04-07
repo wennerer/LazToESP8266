@@ -1,0 +1,477 @@
+object MonitorFrame: TMonitorFrame
+  Left = 0
+  Height = 400
+  Top = 0
+  Width = 1000
+  Align = alClient
+  ClientHeight = 400
+  ClientWidth = 1000
+  TabOrder = 0
+  DesignLeft = 1520
+  DesignTop = 10
+  object Button_Read: TButton
+    AnchorSideLeft.Control = Memo1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    Left = 350
+    Height = 25
+    Top = 10
+    Width = 200
+    BorderSpacing.Left = 25
+    BorderSpacing.Top = 10
+    Caption = 'Read'
+    TabOrder = 0
+    OnClick = Button_ReadClick
+  end
+  object Memo1: TMemo
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 5
+    Height = 390
+    Top = 5
+    Width = 320
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Around = 5
+    ScrollBars = ssAutoBoth
+    TabOrder = 1
+  end
+  object Button_Stop: TButton
+    AnchorSideLeft.Control = Memo1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Button_Read
+    AnchorSideTop.Side = asrBottom
+    Left = 350
+    Height = 25
+    Top = 45
+    Width = 200
+    BorderSpacing.Left = 25
+    BorderSpacing.Top = 10
+    Caption = 'Stop'
+    TabOrder = 2
+    OnClick = Button_StopClick
+  end
+  object Button_Clear: TButton
+    AnchorSideLeft.Control = Memo1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Side = asrBottom
+    Left = 350
+    Height = 25
+    Top = 118
+    Width = 200
+    BorderSpacing.Left = 25
+    BorderSpacing.Top = 10
+    Caption = 'Clear'
+    TabOrder = 3
+    OnClick = Button_ClearClick
+  end
+  object Shape1: TShape
+    AnchorSideLeft.Control = Button_Clear
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 570
+    Height = 380
+    Top = 10
+    Width = 5
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Left = 20
+    BorderSpacing.Top = 10
+    BorderSpacing.Bottom = 10
+    Brush.Color = clSilver
+    Pen.Style = psClear
+  end
+  object StaticText1: TStaticText
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    Left = 585
+    Height = 29
+    Top = 10
+    Width = 90
+    AutoSize = True
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 10
+    Caption = 'Settings : '
+    Color = clForm
+    Font.Height = -19
+    Font.Name = 'Sans'
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 4
+  end
+  object StaticText2: TStaticText
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = StaticText1
+    AnchorSideTop.Side = asrBottom
+    Left = 585
+    Height = 20
+    Top = 92
+    Width = 66
+    AutoSize = True
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 53
+    Caption = 'Baudrate : '
+    Color = clForm
+    Font.Height = -13
+    Font.Name = 'Sans'
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 5
+  end
+  object ComboBox_Baudrate: TComboBox
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = StaticText1
+    AnchorSideTop.Side = asrBottom
+    Left = 695
+    Height = 28
+    Top = 89
+    Width = 164
+    BorderSpacing.Left = 120
+    BorderSpacing.Top = 50
+    ItemHeight = 0
+    ItemIndex = 0
+    Items.Strings = (
+      '9600'
+      '14400'
+      '19200'
+      '28800'
+      '38400'
+      '57600'
+      '74880'
+      '115200'
+    )
+    TabOrder = 6
+    Text = '9600'
+  end
+  object StaticText3: TStaticText
+    AnchorSideLeft.Control = Shape1
+    AnchorSideTop.Control = StaticText2
+    AnchorSideTop.Side = asrBottom
+    Left = 585
+    Height = 20
+    Top = 139
+    Width = 64
+    AutoSize = True
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 27
+    Caption = 'Data Bits : '
+    Color = clForm
+    Font.Height = -13
+    Font.Name = 'Sans'
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 7
+  end
+  object ComboBox_DataBits: TComboBox
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = ComboBox_Baudrate
+    AnchorSideTop.Side = asrBottom
+    Left = 695
+    Height = 28
+    Top = 132
+    Width = 164
+    BorderSpacing.Left = 120
+    BorderSpacing.Top = 15
+    ItemHeight = 0
+    ItemIndex = 3
+    Items.Strings = (
+      '6'
+      '6'
+      '7'
+      '8'
+    )
+    TabOrder = 8
+    Text = '8'
+  end
+  object StaticText4: TStaticText
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = StaticText3
+    AnchorSideTop.Side = asrBottom
+    Left = 590
+    Height = 20
+    Top = 179
+    Width = 46
+    AutoSize = True
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 20
+    Caption = 'Parity : '
+    Color = clForm
+    Font.Height = -13
+    Font.Name = 'Sans'
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 9
+  end
+  object ComboBox_Parity: TComboBox
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = ComboBox_DataBits
+    AnchorSideTop.Side = asrBottom
+    Left = 695
+    Height = 28
+    Top = 175
+    Width = 164
+    BorderSpacing.Left = 120
+    BorderSpacing.Top = 15
+    ItemHeight = 0
+    ItemIndex = 0
+    Items.Strings = (
+      'None'
+      'Even '
+      'Odd'
+    )
+    TabOrder = 10
+    Text = 'None'
+  end
+  object StaticText5: TStaticText
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = StaticText4
+    AnchorSideTop.Side = asrBottom
+    Left = 590
+    Height = 20
+    Top = 224
+    Width = 61
+    AutoSize = True
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 25
+    Caption = 'Stopbits : '
+    Color = clForm
+    Font.Height = -13
+    Font.Name = 'Sans'
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 11
+  end
+  object ComboBox_Stopbits: TComboBox
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = ComboBox_Parity
+    AnchorSideTop.Side = asrBottom
+    Left = 695
+    Height = 28
+    Top = 218
+    Width = 164
+    BorderSpacing.Left = 120
+    BorderSpacing.Top = 15
+    ItemHeight = 0
+    ItemIndex = 0
+    Items.Strings = (
+      '1'
+      '2'
+    )
+    TabOrder = 12
+    Text = '1'
+  end
+  object CheckGroup_FlowControl: TCheckGroup
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = ComboBox_Stopbits
+    AnchorSideTop.Side = asrBottom
+    Left = 590
+    Height = 105
+    Top = 261
+    Width = 185
+    AutoFill = True
+    BorderSpacing.Left = 15
+    BorderSpacing.Top = 15
+    Caption = 'FlowControl :'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.TopBottomSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 86
+    ClientWidth = 183
+    Color = clForm
+    Font.Height = -13
+    Font.Name = 'Sans'
+    Items.Strings = (
+      'Hardware'
+      'Software'
+    )
+    ParentBackground = False
+    ParentFont = False
+    ParentColor = False
+    TabOrder = 13
+    Data = {
+      020000000202
+    }
+  end
+  object Edit1: TEdit
+    AnchorSideLeft.Control = Memo1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Button_Stop
+    AnchorSideTop.Side = asrBottom
+    Left = 350
+    Height = 28
+    Top = 80
+    Width = 110
+    BorderSpacing.Left = 25
+    BorderSpacing.Top = 10
+    TabOrder = 14
+  end
+  object Button_SendString: TButton
+    AnchorSideLeft.Control = Edit1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Button_Stop
+    AnchorSideTop.Side = asrBottom
+    Left = 470
+    Height = 28
+    Top = 80
+    Width = 80
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 10
+    Caption = 'Send String'
+    TabOrder = 15
+    OnClick = Button_SendStringClick
+  end
+  object CheckBox_TimeStamp: TCheckBox
+    AnchorSideLeft.Control = Memo1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Button_Clear
+    AnchorSideTop.Side = asrBottom
+    Left = 350
+    Height = 23
+    Top = 158
+    Width = 137
+    BorderSpacing.Left = 25
+    BorderSpacing.Top = 15
+    Caption = 'TimeStamp on/off'
+    TabOrder = 16
+  end
+  object StaticText6: TStaticText
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = StaticText1
+    AnchorSideTop.Side = asrBottom
+    Left = 585
+    Height = 17
+    Top = 54
+    Width = 65
+    BorderSpacing.Left = 10
+    BorderSpacing.Top = 15
+    Caption = 'Port : '
+    Color = clForm
+    ParentColor = False
+    TabOrder = 17
+  end
+  object ComboBox_Port: TComboBox
+    AnchorSideLeft.Control = Shape1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = StaticText1
+    AnchorSideTop.Side = asrBottom
+    Left = 695
+    Height = 28
+    Top = 50
+    Width = 164
+    BorderSpacing.Left = 120
+    BorderSpacing.Top = 11
+    ItemHeight = 0
+    TabOrder = 18
+    Text = '/dev/ttyUSB0'
+  end
+  object SpeedButton_refreshport: TSpeedButton
+    AnchorSideLeft.Control = ComboBox_Port
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = StaticText1
+    AnchorSideTop.Side = asrBottom
+    Left = 879
+    Height = 28
+    Hint = 'Update the port list'
+    Top = 50
+    Width = 28
+    BorderSpacing.Left = 20
+    BorderSpacing.Top = 11
+    Glyph.Data = {
+      36090000424D3609000000000000360000002800000018000000180000000100
+      2000000000000009000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00D1A2000BD3AB0046D5AA0072D4A90077D5AA005AD6AD001FFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D1AE
+      0016D4AA0093D4AA00F2D4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FED4AA
+      00BDD6A80032FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00D3AA006FD5AA0096D5AA0006FFFFFF00FFFFFF00FFFFFF00D3AA0045D4AA
+      00EED4AA00FFD4AA00FFD4AA00FBD3AA00D3D4AA00C9D4AA00EDD4AA00FFD4AA
+      00FFD5AA00FCD4AB0076FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FBD4AA00FFD5AA003CFFFFFF00FFFFFF00D5AA006CD4AA00FBD4AA
+      00FFD4AA00ECD4A90071CFAF0010FFFFFF00FFFFFF00FF800002D4A90047D4AA
+      00D0D4AA00FFD4AA00FFD5AB0091FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FFD4AA00FFD3AB0040FFFFFF00D4A9006BD4AA00FFD4AA00FFD4AA
+      00C9D8A7001AFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D5AA
+      0006D4AA009FD4AA00FFD4AA00FFD4AB0076FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FFD4AA00FFD3AB0040D5AA0042D4AA00FAD4AA00FFD3AA00AFC6AA
+      0009FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFF0001D3A900A4D4AA00FFD4AA00FBD2AA0039FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FFD4AA00FFD3AA0051D4AA00ECD4AA00FFD3AA00CDCCB3000AFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00DBB60007D4AA00CED4AA00FFD4AA00D9FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FFD4AA00FFD4AB00B6D4AA00FFD4AA00EBD3A7001DFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00D2AC0028D4AA00EED3AA00C7FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FFD4AA00FFD4AB00FED4AA00FFD4A9008FD6A90044D6A90044D6A9
+      003ED5AA0006FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00DBB60007FF800002FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA
+      00FFD5AA0096FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00D4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA
+      00FBD3AA006FFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D3AA006FD4AA00FBD4AA00FFD4AA
+      00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D5AA0096D4AA00FFD4AA00FFD4AA
+      00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFD4AA00FFFFFFFF00FFFFFF00FFFF
+      FF00FF800002DBB60007FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D5AA0006D6A9003ED6A90044D6A9
+      0044D5AA0090D4AA00FFD4AB00FED4AA00FFD4AA00FFFFFFFF00FFFFFF00FFFF
+      FF00D3AA00C7D4AA00EED1AA0027FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D3A7
+      001DD4AA00ECD4AA00FFD5AA00B5D4AA00FFD4AA00FFFFFFFF00FFFFFF00FFFF
+      FF00D4AA00D9D4AA00FFD5AA00CCCC990005FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00CCB3000AD3AA
+      00CDD4AA00FFD4AA00ECD2AC0050D4AA00FFD4AA00FFFFFFFF00FFFFFF00FFFF
+      FF00D4A9003BD5AA00FCD4AA00FFD4AA009FFFFF0001FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C6AA0009D4AA00B0D4AA
+      00FFD4AA00FAD4A90041D3AB0040D4AA00FFD4AA00FFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00D3A9007AD4AA00FFD4AA00FFD5AA009CCC990005FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D8A7001AD4AA00CAD4AA00FFD4AA
+      00FFD3AA0069FFFFFF00D3AB0040D4AA00FFD4AA00FFFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00D4A90095D4AA00FFD4AA00FFD5AA00CCD5AB0043FFFF
+      0001FFFFFF00FFFFFF00CCAA000FD3AA006FD4AA00EBD4AA00FFD4AA00FBD4A9
+      006BFFFFFF00FFFFFF00D5AA003CD4AA00FFD4AA00FBFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFF0001D4AB007CD4AA00FED4AA00FFD4AA00FFD4AA
+      00E7D3AA00C1D4AA00D1D4AA00FAD4AA00FFD4AA00FFD4AA00EDD6A90044FFFF
+      FF00FFFFFF00FFFFFF00D5AA0006D5AA0096D3AA006FFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D5AA0036D5AA00C0D4AA00FFD4AA
+      00FFD4AA00FFD4AA00FFD4AA00FFD4AA00F2D4AB0094D1AE0016FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D3A80023D5AA
+      0060D5AB0079D3A90074D5AA0048D5AA000CFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    ShowHint = True
+    ParentShowHint = False
+    OnClick = SpeedButton_refreshportClick
+  end
+end
