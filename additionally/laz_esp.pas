@@ -22,7 +22,8 @@ procedure CopyStrToBuffer(const s: shortstring; const buf: PChar);
 procedure StrToPChar(const s: shortstring; out P: PChar);
 function IntToChar(Value: integer): TChrArray;
 function IntToString(Value: integer):TString11;
-function ConcatPChar250(P1,P2:PChar):PChar;
+function ConcatPChar250(P1,P2:PChar):PChar; //verliert den Zeiger!
+function ConcatPChar(P1, P2: PChar): string;
 function ipaddr_aton(var cp: PChar; var addr: PIP_ADDR_T): Integer;
 function ipaddr_ntoa(addr: pip_addr_t): PChar;
 function ipaddr_ntoa_r(addr: pip_addr_t;buf: PChar;buflen: Integer): PChar;
@@ -186,15 +187,19 @@ begin
  Result := s;
 end ;
 
-function ConcatPChar250(P1,P2:PChar):PChar;
+function ConcatPChar250(P1,P2:PChar):PChar;  //Funktioniert nicht richtig verliert den Zeiger!
 var buf    : array [0..250] of byte;
-    l,i,lv : integer;
-
+    i      : integer;
 begin
  i := length(P1);
  CopyStrToBuffer(P1,@(buf[0]));
  CopyStrToBuffer(P2,@(buf[i]));
  Result := PChar(@buf);
+end;
+
+function ConcatPChar(P1, P2: PChar): string;
+begin
+  Result := StrPas(P1) + StrPas(P2);
 end;
 
 function ipaddr_aton(var cp: PChar; var addr: PIP_ADDR_T): Integer;
