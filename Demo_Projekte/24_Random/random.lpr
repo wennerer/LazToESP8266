@@ -1,0 +1,30 @@
+program testrandom;
+
+uses
+  fmem,
+  laz_esp;
+var
+  buffer : integer;
+  ret,i  : integer;
+
+begin
+
+ SerialBegin(9600);
+
+ repeat
+  sleep(500);
+
+  ret := getrandom(@buffer, 4, 0);
+  writeln('Anzahl Bytes gelesen: ',ret);
+  i := buffer;
+  writeln('getrandom: ',i);
+
+  i:=Random;
+  writeln('Random: ',i);
+
+  i:=GetRandomInRange(-50,100);
+  writeln('In Range -50-100: ',i);
+
+
+ until false ;
+end.

@@ -3,7 +3,17 @@ unit Laz_ESP;
 interface
 
 uses
-  task, portmacro,uart, esp_err, lwip_ip4_addr,lwip_ip_addr, lwip_def,lwip_udp,lwip_err;
+  task,
+  portmacro,
+  uart,
+  esp_err,
+  lwip_ip4_addr,
+  lwip_ip_addr,
+  lwip_def,
+  lwip_udp,
+  lwip_err,
+  esp_log2,
+  ctypes;
 
 type
   TChrArray = array[0..10] of char;
@@ -13,9 +23,30 @@ type
 const
  UART_PORT: Tuart_port = UART_NUM_0;
 
+const
+  { Flags for getrandom }
+  GRND_NONBLOCK = $0001;  { Do not block if entropy pool not initialized }
+  GRND_RANDOM   = $0002;  { Use /dev/random instead of /dev/urandom }
+
 var
  uart_cfg: Tuart_config;
 
+ {
+   Get random bytes from the kernel's random number generator
+
+   Parameters:
+     buf     - pointer to buffer to fill with random bytes
+     buflen  - number of bytes to generate
+     flags   - control flags (GRND_NONBLOCK, GRND_RANDOM)
+
+   Returns:
+     On success: number of bytes written to buf
+     On error: -1 (and errno is set)
+ }
+function getrandom(buf: pointer; buflen: PtrUInt; flags: cardinal): PtrInt;cdecl; external;
+
+function Random: integer;
+function GetRandomInRange(minVal, maxVal: integer): integer;
 procedure sleep(Milliseconds: cardinal);
 function SerialBegin(aBaudrate : longint):boolean;
 procedure CopyStrToBuffer(const s: shortstring; const buf: PChar);
@@ -32,6 +63,31 @@ function IntToPChar(I : Longint) : PChar;
 function HexValue(c: Char): Integer;
 
 implementation
+
+function Random: integer;
+var
+  buffer: integer;
+  bytesRead: integer;
+begin
+ bytesRead := getrandom(@buffer, 4, 0);
+ if bytesRead > 0 then
+   Result := buffer
+  else
+   ESP_LOGE('Random','%s',['No random number found']);
+
+end;
+
+function GetRandomInRange(minVal, maxVal: integer): integer;
+var
+  buffer: LongWord;
+  bytesRead: integer;
+begin
+  bytesRead := getrandom(@buffer, 4, 0);
+  if bytesRead > 0 then
+   Result := minVal + (buffer mod (maxVal - minVal + 1))
+  else
+   ESP_LOGE('GetRandomInRange','%s',['No random number found']);
+end;
 
 procedure sleep(Milliseconds: cardinal);
 begin
