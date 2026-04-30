@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="ESP8266"/>
+    <Units>
+      <Unit>
+        <Filename Value="NVS_Test.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="19"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="Test.lpr"/>
+        <UnitName Value="NVS"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3"/>
+        <CursorPos X="17" Y="30"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/nvs.pp"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="54"/>
+        <CursorPos X="10" Y="68"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/lwip_pbuf.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="27" Y="20"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="4">
+      <Position>
+        <Filename Value="NVS_Test.lpr"/>
+        <Caret Line="50" Column="21" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="NVS_Test.lpr"/>
+        <Caret Line="10" Column="12"/>
+      </Position>
+      <Position>
+        <Filename Value="NVS_Test.lpr"/>
+        <Caret Line="30" Column="3" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="NVS_Test.lpr"/>
+        <Caret Line="14" Column="3" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="NVS_Test.lpr"/>
+        <Caret Line="15" Column="14"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

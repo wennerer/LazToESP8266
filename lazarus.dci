@@ -166,11 +166,30 @@ $(AttributesStart)
 EnableMakros=true
 $(AttributesEnd)
 IntToHex($Param())|
+[inittime | initialises a time server [uses time_server, esp_sntp]]
+$(AttributesStart)
+EnableMakros=true
+KeepSubIndent=true
+$(AttributesEnd)
+|//var Stat : Tsntp_sync_status;
+initTime;
+repeat
+ sleep (100);
+ Stat := sntp_get_sync_status;
+until Stat = SNTP_SYNC_STATUS_COMPLETED;
+
+
 [is | IntToStr]
 $(AttributesStart)
 EnableMakros=true
 $(AttributesEnd)
 IntToStr($Param())|
+[link | inserts a link to a library]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+{$linklib |XXXX, static}
+
 [ofall | case of all enums]
 $(AttributesStart)
 EnableMakros=true
@@ -227,7 +246,7 @@ $(AttributesStart)
 EnableMakros=true
 $(AttributesEnd)
 property $Param(Name): string read $Param(Get)$Param(Name,sync=1) write $Param(Set)$Param(Name,sync=1);|
-[pwd | Includedatei für Passwort einfogen]
+[pwd | Insert password incfile]
 $(AttributesStart)
 EnableMakros=true
 $(AttributesEnd)
@@ -253,23 +272,24 @@ $(AttributesStart)
 EnableMakros=true
 $(AttributesEnd)
 StrToIntDef($Param(), $Param(-1))|
-[Start_Timer | erzeugt einen XTimer mit Callback für ESP8266]
+[Start_Timer | creates an XTimer with a callback for the ESP8266 [uses timers,projdefs]]
 $(AttributesStart)
 EnableMakros=true
 KeepSubIndent=true
 $(AttributesEnd)
-procedure TimerCallback(xTimerHandle: TTimerHandle);
+//var xTimerHandle: TTimerHandle,Interval : LongInt;
+(*procedure Timer1Callback(xTimerHandle: TTimerHandle);
 begin
  //to something
-end;
+end;*)
 
-procedure Start_Timer(out xTimerHandle: TTimerHandle;Interval:LongInt);
+(*procedure Start_Timer(out xTimerHandle: TTimerHandle;Interval:LongInt);
 begin
  XTimerHandle := xTimerCreate('Timer1', // Name des Timers
                               pdMS_TO_TICKS(Interval),// Periode in Ticks
                               pdTRUE,          // pdTRUE = wiederholend, pdFALSE = einmalig
                               nil,             // Timer-ID optional
-                              @TimerCallback);//Callback-Funktion
+                              @Timer1Callback);//Callback-Funktion
 
  if xTimerHandle = nil then
   begin
@@ -280,11 +300,11 @@ begin
 // Timer starten
  if xTimerStart(xTimerHandle, 0) <> pdPASS then
   writeln('The timer could not be started');
-end;
+end;*)
 
 Start_Timer(|xTimerHandle,Interval);
 
-[Stop_Timer | xTimer ESP8266 anhalten und freigeben]
+[Stop_Timer | Stop and free a xTimer ESP8266]
 $(AttributesStart)
 EnableMakros=true
 KeepSubIndent=true
@@ -296,6 +316,20 @@ begin
  else
   xTimerDelete(xTimerHandle, 0);
 end;
+
+[Task | Creates a XTask [uses Task]]
+$(AttributesStart)
+EnableMakros=true
+$(AttributesEnd)
+//procedure CallBack_Task1(pvParameters: Pointer);cdecl;
+xTaskCreate(
+    @CallBack_Task1,
+    PChar('Task1'),
+    4096,
+    nil,
+    3,
+    nil
+  );
 
 [todo | ToDo item creator]
 $(AttributesStart)
@@ -353,6 +387,17 @@ EnableMakros=true
 $(AttributesEnd)
 while $Param(LoopCondition) do
   |
+[WifiAP | creates a Wi-Fi connection [uses WifiConnect2]]
+$(AttributesStart)
+EnableMakros=true
+KeepSubIndent=true
+$(AttributesEnd)
+connectWifiAP(AP_NAME, PWD);
+ repeat
+  sleep(500);
+  writeln('Wait for Wifi ......');
+ until stationConnected = true;
+
 [withb | with statement]
 $(AttributesStart)
 EnableMakros=true
