@@ -50,6 +50,7 @@ begin
     ESP_LOGE('FileWrite','%s',[ 'fopen write failed']);
     exit(false);
   end;
+ //fprintf(f,aText,#10);
  fprintf(f,'%s%s',aText,PChar(LineEnding));
  fclose(f);
  Result := True;
@@ -65,6 +66,7 @@ begin
     ESP_LOGE('FileAppend','%s',[ 'fopen write failed']);
     exit(false);
   end;
+ //fprintf(f,aText,LineEnding);
  fprintf(f, '%s%s', aText, PChar(LineEnding));
 
 

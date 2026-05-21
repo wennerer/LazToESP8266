@@ -13,6 +13,7 @@ procedure currentTimeAsString(out s: shortstring);
 procedure DateTimeAsString_de(out s: shortstring);
 procedure DateAsString_de(out s: shortstring);
 procedure TimeAsString_de(out s: shortstring);
+procedure HourAsString(out h : shortstring);
 
 implementation
 
@@ -137,5 +138,18 @@ begin
   if length(tmp) = 1 then tmp := '0' + tmp;
   s := s + tmp;
 end;
+
+procedure HourAsString(out h : shortstring);
+var
+  now: Ttime;
+  timeinfo: Ttm;
+  tmp: string[8];
+begin
+  time(@now);
+  localtime_r(@now, @timeinfo);
+
+  Str(timeinfo.tm_hour, h);
+end;
+
 end.
 
