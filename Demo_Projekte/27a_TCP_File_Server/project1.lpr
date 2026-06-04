@@ -1,5 +1,7 @@
 program project1;
 
+{$Include sdkconfig.inc}
+
 uses
   fmem,
   laz_esp,
@@ -23,42 +25,61 @@ var
  Path        : PChar = '/MyFolder';
  FilePath    : PChar = '/MyFolder/MyFile';
 
+(*-------------------------------------------Geht auch so für reine Textdateien----------------------------------------
 procedure SendFile (asock: longint);
 var
-  f: file;
-  fileBuf: array[0..1023] of byte;
-  readBytes: longint;
-  err: longint;
+  f: PFILE;
+  lineBuf: array[0..255] of Char;
 begin
-  AssignFile(f, '/MyFolder/MyFile');
-  {$I-}
-  Reset(f, 1);
-  {$I+}
+  f := fopen('/MyFolder/MyFile', 'r');
 
-  if IOResult <> 0 then
+  if f = nil then
+    Exit;
+
+  while fgets(@lineBuf[0], SizeOf(lineBuf), f) <> nil do
   begin
-    esp_loge(TAG,'%s', ['File open failed']);
-    exit;
+    lwip_send(asock, @lineBuf[0], strlen(@lineBuf[0]), 0);
+  end;
+
+  fclose(f);
+end;
+*)
+
+
+procedure SendFile(asock: LongInt);
+var
+  f: PFILE;
+  fileBuf: array[0..1023] of Byte;
+  readBytes: SizeUInt;
+  err: LongInt;
+begin
+  f := fopen('/MyFolder/MyFile', 'rb');
+
+  if f = nil then
+  begin
+    esp_loge(TAG,'%s',['File open failed']);
+    Exit;
   end;
 
   repeat
-    BlockRead(f, fileBuf, SizeOf(fileBuf), readBytes);
+    readBytes := fread(@fileBuf[0], 1, SizeOf(fileBuf), f);
 
     if readBytes > 0 then
     begin
-      err := lwip_send(asock, @fileBuf, readBytes, 0);
+      err := lwip_send(asock, @fileBuf[0], readBytes, 0);
+
       if err < 0 then
       begin
-        esp_loge(TAG,'%s', ['send failed']);
-        CloseFile(f);
-        break;
+        esp_loge(TAG,'%s',['send failed']);
+        Break;
       end;
     end;
 
   until readBytes = 0;
 
-  CloseFile(f);
-  esp_logi(TAG,'%s', ['File transfer complete']);
+  fclose(f);
+
+  esp_logi(TAG,'%s',['File transfer complete']);
 end;
 
 
@@ -78,100 +99,94 @@ var
  // Client‑Adresse
   sourceAddr: sockaddr_in;
   addrLen: longword;
-  tv: timeval;
 
 begin
-  while True do
+
+// IPv4
+ FillChar(destAddr, SizeOf(destAddr), 0);
+ destAddr.sin_family := AF_INET;
+ destAddr.sin_port := lwip_htons(PORT);
+ destAddr.sin_addr.s_addr := lwip_htonl(INADDR_ANY);
+
+ addr_family := AF_INET;
+ ip_protocol := IPPROTO_IP;
+
+//Socket erstellen
+ listen_sock := lwip_socket(addr_family, SOCK_STREAM, ip_protocol);
+ if listen_sock < 0 then  //kleiner 0 bedeutet Fehler
   begin
-    // IPv4
-    FillChar(destAddr, SizeOf(destAddr), 0);
-    destAddr.sin_family := AF_INET;
-    destAddr.sin_port := lwip_htons(PORT);
-    destAddr.sin_addr.s_addr := lwip_htonl(INADDR_ANY);
+   ESP_LOGE(TAG,'%s', ['Unable to create socket']);
+//Kann der Socket nicht erstellt werden nach 1 Sekunde wieder probieren
+   vTaskDelay(1000 div portTICK_PERIOD_MS);
+  end;
 
-    addr_family := AF_INET;
-    ip_protocol := IPPROTO_IP;
+ ESP_LOGI(TAG,'%s', ['Socket created']);
 
-   //Socket erstellen
-    listen_sock := lwip_socket(addr_family, SOCK_STREAM, ip_protocol);
-    if listen_sock < 0 then  //kleiner 0 bedeutet Fehler
+//Socket wird an IP/Port gebunden
+ err := lwip_bind(listen_sock, @destAddr, SizeOf(destAddr));
+ if err <> 0 then
+  begin
+   esp_loge(TAG,'%s', ['Socket unable to bind']);
+   lwip_close(listen_sock);
+  end;
+
+ esp_logi(TAG,'%s', ['Socket binded']);
+
+//Auf TCP Verbindungen warten
+ err := lwip_listen(listen_sock, 1);
+ if err <> 0 then
+  begin
+   esp_loge(TAG,'%s', ['Error during listen']);
+   lwip_close(listen_sock);
+   exit;
+   //continue;
+  end;
+ while True do
+  begin
+   esp_logi(TAG,'%s', ['Socket listening']);
+
+   addrLen := SizeOf(sourceAddr);
+ //Verbindung akzeptieren
+   sock := lwip_accept(listen_sock, @sourceAddr, @addrLen);
+   if sock < 0 then
     begin
-      ESP_LOGE(TAG,'%s', ['Unable to create socket']);
-     //Kann der Socket nicht erstellt werden nach 1 Sekunde wieder probieren
-      vTaskDelay(1000 div portTICK_PERIOD_MS);
-      continue; //Mit „Continue“ springt man zum Ende der aktuellen Schleife.
-    end;
-   //Damit wacht der Task spätestens alle 5 Sekunden auf.
-    lwip_setsockopt(listen_sock, SOL_SOCKET, SO_RCVTIMEO, @tv, SizeOf(tv));
-
-    ESP_LOGI(TAG,'%s', ['Socket created']);
-
-   //Socket wird an IP/Port gebunden
-    err := lwip_bind(listen_sock, @destAddr, SizeOf(destAddr));
-    if err <> 0 then
-    begin
-      esp_loge(TAG,'%s', ['Socket unable to bind']);
-      lwip_close(listen_sock);
-      continue;
-    end;
-
-    esp_logi(TAG,'%s', ['Socket binded']);
-
-   //Auf TCP Verbindungen warten
-    err := lwip_listen(listen_sock, 1);
-    if err <> 0 then
-    begin
-      esp_loge(TAG,'%s', ['Error during listen']);
-      lwip_close(listen_sock);
-      continue;
+     esp_loge(TAG,'%s', ['Unable to accept connection']);
+     lwip_close(listen_sock);
+     continue;
     end;
 
-    esp_logi(TAG,'%s', ['Socket listening']);
+   esp_logi(TAG,'%s', ['Socket accepted']);
 
-    addrLen := SizeOf(sourceAddr);
-   //Verbindung akzeptieren
-    sock := lwip_accept(listen_sock, @sourceAddr, @addrLen);
-    if sock < 0 then
-    begin
-      esp_loge(TAG,'%s', ['Unable to accept connection']);
-      lwip_close(listen_sock);
-      continue;
-    end;
-   //Damit wacht der Task spätestens alle 5 Sekunden auf.
-    lwip_setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, @tv, SizeOf(tv));
-    esp_logi(TAG,'%s', ['Socket accepted']);
-
-    while True do
+   while True do
     begin
      //Daten empfangen
       len := lwip_recv(sock, @rx_buffer, SizeOf(rx_buffer)-1, 0);
-
       if len < 0 then
-      begin
-        esp_loge(TAG,'%s', ['recv failed']);
-        break;
-      end
+       begin
+        esp_loge(TAG,'%s', ['recv timeout']);
+        continue;
+       end
       else if len = 0 then
-      begin
-        esp_logi(TAG,'%s', ['Connection closed']);
+       begin
+        esp_logi(TAG,'%s', ['client disconnected']);
         break;
-      end
+       end
       else
-      begin
-       //Buffer wird als String ausgegeben
+       begin
+      //Buffer wird als String ausgegeben
         rx_buffer[len] := #0;
         esp_logi(TAG, '%s %d %s', ['Received',len,'bytes']);
         esp_logi(TAG,'%s', [PChar(@rx_buffer)]);
 
-       SendFile(sock);
-
-      end;
-    end;
+        SendFile(sock);
+        break;
+       end;
+     end;
 
    //Verbindung schließen
     lwip_shutdown(sock, 0);
     lwip_close(sock);
-    lwip_close(listen_sock);
+
   end;
 
   vTaskDelete(nil);
@@ -189,9 +204,19 @@ begin
  RegisterSpiffs(5,Path,Tag);
  sleep(2000);//etwas warten bis spiffs registriert
  if FileDelete(FilePath) then writeln ('File deleted');
+ sleep(1000);
  if not FileExists(FilePath) then
-  FileWrite(FilePath,'Das ist eine von mir erzeugte Datei');
+  begin
+   FileWrite(FilePath,'Das ist eine von mir erzeugte Datei');
+   FileAppend(FilePath,'Zeile 1');
+   FileAppend(FilePath,'Zeile 2');
+   FileAppend(FilePath,'Zeile 3');
+   FileAppend(FilePath,'Zeile 4');
+   FileAppend(FilePath,'Zeile 5');
+   writeln('File created');
+  end;
 
+ sleep(1000);
  xTaskCreate(@tcp_server_task, 'tcp_server', 4096, nil, 5, nil);
 
  repeat
