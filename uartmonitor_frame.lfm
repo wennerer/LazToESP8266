@@ -292,7 +292,7 @@ object MonitorFrame: TMonitorFrame
     ChildSizing.ShrinkVertical = crsScaleChilds
     ChildSizing.Layout = cclLeftToRightThenTopToBottom
     ChildSizing.ControlsPerLine = 1
-    ClientHeight = 86
+    ClientHeight = 88
     ClientWidth = 183
     Color = clForm
     Font.Height = -13

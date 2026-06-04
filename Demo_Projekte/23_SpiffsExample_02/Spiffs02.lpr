@@ -75,7 +75,7 @@ begin
 
  repeat
   sleep(1000);
-  writeln('Loop');
+  writeln('wait 10 Sec please');
  until false ;
  UnRegisterSpiffs(Tag);
 end.

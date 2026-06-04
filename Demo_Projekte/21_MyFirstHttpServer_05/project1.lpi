@@ -36,7 +36,7 @@
       <Filename Value="project1"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir);../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf;../../../../../../../Programme/Laz-ESP8266/cross/units/additionally"/>
+      <IncludeFiles Value="$(ProjOutDir);../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>

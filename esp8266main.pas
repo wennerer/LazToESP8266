@@ -1,6 +1,6 @@
 { <Some adjustments specifically for programming an ESP8266>
 
-  Copyright (C) <28.7.2025> <Bernd Hübner (wennerer)> <contact: German Lazarusforum>
+  Copyright (C) <04.6.2026> <Bernd Hübner (wennerer)> <contact: German Lazarusforum>
 
   This source is free software; you can redistribute it and/or modify it under the terms of the GNU General Public
   License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later
@@ -28,11 +28,13 @@ interface
 
 uses
   Classes, SysUtils, IDEWindowIntf, MenuIntf, IDECommands, Forms, LCLType,
-  Dialogs, Graphics, uartmonitor_frame;
+  Dialogs, Graphics, uartmonitor_frame, Process, IDEMsgIntf, IDEExternToolIntf,LazIDEIntf;
 
 resourcestring
-  mnuESP8266        = 'ESP8266';
+  mnuESP8266         = 'ESP8266';
   mnuShowUartMonitor = 'UART-Monitor';
+  mnuReadChip        = 'Chip-ID lesen';
+  mnuEraseChip       = 'Chip löschen';
 
 type
 
@@ -40,8 +42,9 @@ type
 
   TMyUartMonitorForm = class (TCustomForm)
   private
-   MainFrame : TMonitorFrame;
+   //MainFrame : TMonitorFrame;
   public
+   MainFrame : TMonitorFrame;
    constructor CreateNew(AOwner: TComponent; Num: Integer = 0); override;
    destructor  Destroy; override;
   end;
@@ -69,6 +72,62 @@ begin
  IDEWindowCreators.ShowForm(UartMonitorForm.Name,true);
 end;
 
+procedure OnCmdReadClick(Sender: TObject);
+var
+  s    : ansistring;
+  SL   : TStringList;
+  i    : Integer;
+  Path : String;
+
+begin
+ Path := LazarusIDE.GetPrimaryConfigPath;
+ i := Pos('config_lazarus',Path);
+ Path := Copy(Path,0,i-1)+'cross/bin/xtensa-freertos/esp-rtos-3.4/components/esptool_py/esptool/esptool-orig.py';
+
+ if RunCommand(Path,['-p',UartMonitorForm.MainFrame.ComboBox_Port.Text, 'flash_id'], s)
+  then
+   begin
+    IDEMessagesWindow.Clear;
+    SL := TStringList.Create;
+    try
+     SL.Text := S;
+     for i := 0 to SL.Count - 1 do IDEMessagesWindow.AddCustomMessage(mluImportant,SL[i]);
+    finally
+     SL.Free;
+    end;
+   end
+  else
+   showmessage('Befehl fehlgeschlagen, Port ist: '+ UartMonitorForm.MainFrame.ComboBox_Port.Text);
+end;
+
+procedure OnCmdEraseClick(Sender: TObject);
+var
+  s    : ansistring;
+  SL   : TStringList;
+  i    : Integer;
+  Path : String;
+
+begin
+ Path := LazarusIDE.GetPrimaryConfigPath;
+ i := Pos('config_lazarus',Path);
+ Path := Copy(Path,0,i-1)+'cross/bin/xtensa-freertos/esp-rtos-3.4/components/esptool_py/esptool/esptool-orig.py';
+
+ if RunCommand(Path,['-p',UartMonitorForm.MainFrame.ComboBox_Port.Text, 'erase_flash'], s)
+  then
+   begin
+    IDEMessagesWindow.Clear;
+    SL := TStringList.Create;
+    try
+     SL.Text := S;
+     for i := 0 to SL.Count - 1 do IDEMessagesWindow.AddCustomMessage(mluImportant,SL[i]);
+    finally
+     SL.Free;
+    end;
+   end
+  else
+   showmessage('Befehl fehlgeschlagen, Port ist: '+ UartMonitorForm.MainFrame.ComboBox_Port.Text);
+end;
+
 procedure Register;
 var Key      : TIDEShortCut;
     Cat      : TIDECommandCategory;
@@ -83,7 +142,12 @@ begin
 
   IDEWindowCreators.Add('UartMonitorForm',@CreateUartMonitorForm,nil,'100','100','1100','500');
 
-  //Erzeugt den Menüeintrag mit Shortcut:
+  //Chip lesen
+  RegisterIDEMenuCommand(itmESP8266,mnuReadChip,mnuReadChip, nil,@OnCmdReadClick, nil,'ID_16');
+  //Chip löschen
+  RegisterIDEMenuCommand(itmESP8266,mnuEraseChip,mnuEraseChip, nil,@OnCmdEraseClick, nil,'Erase_16');
+
+  //UartMonitor-Erzeugt den Menüeintrag mit Shortcut:
   Key := IDEShortCut(VK_M,[ssShift,ssAlt],VK_UNKNOWN,[]);
   Cat := IDECommandList.FindIDECommand(ecFind).Category;
   CmdMyTool := RegisterIDECommand(Cat,mnuShowUartMonitor,mnuShowUartMonitor, Key, nil,@OnCmdUartMonitorClick);

@@ -9,7 +9,7 @@
         <MainUnitHasScaledStatement Value="False"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <Title Value="Spiffs02"/>
+      <Title Value="SpiffExample"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
     </General>
@@ -25,24 +25,18 @@
     </RunParams>
     <Units>
       <Unit>
-        <Filename Value="Spiffs02.lpr"/>
+        <Filename Value="SpiffExample.lpr"/>
         <IsPartOfProject Value="True"/>
-      </Unit>
-      <Unit>
-        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_fileio.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="esp_fileIO"/>
       </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="Spiffs02"/>
+      <Filename Value="SpiffExample"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjOutDir);../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf"/>
-      <OtherUnitFiles Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally"/>
+      <IncludeFiles Value="$(ProjOutDir)"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>
@@ -71,7 +65,7 @@
         <ShowHintsForSenderNotUsed Value="True"/>
       </Verbosity>
       <ExecuteAfter>
-        <Command Value="/home/bernd/Programme/Laz-ESP8266/cross/bin/xtensa-freertos/esp-rtos-3.4/components/esptool_py/esptool/esptool.py --chip esp8266 --port &quot;/dev/ttyUSB0&quot; --baud 115200 --before &quot;default_reset&quot; --after &quot;hard_reset&quot; write_flash -z --flash_mode &quot;dio&quot; --flash_freq &quot;40m&quot; --flash_size &quot;4MB&quot;   0x0 /home/bernd/Sprachen/Lazarus/64_bit/Meine_Packages/ESP_8266/ESP8266/Demo_Projekte/23_SpiffsExample_02/bootloader.bin 0x8000 /home/bernd/Programme/Laz-ESP8266/cross/lib/xtensa-freertos/lx106/spiffstable.bin 0x10000 $(TargetFile).bin 0x300000 /home/bernd/Programme/Laz-ESP8266/cross/lib/xtensa-freertos/lx106/spiffs.bin"/>
+        <Command Value="/home/bernd/Programme/Laz-ESP8266/cross/bin/xtensa-freertos/esp-rtos-3.4/components/esptool_py/esptool/esptool.py --chip esp8266 --port &quot;/dev/ttyUSB0&quot; --baud 115200 --before &quot;default_reset&quot; --after &quot;hard_reset&quot; write_flash -z --flash_mode &quot;dio&quot; --flash_freq &quot;40m&quot; --flash_size &quot;4MB&quot;   0x0 /home/bernd/Sprachen/Lazarus/64_bit/Meine_Packages/ESP_8266/ESP8266/Demo_Projekte/22b_SpiffsExample_01b/bootloader.bin 0x8000 /home/bernd/Programme/Laz-ESP8266/cross/lib/xtensa-freertos/lx106/spiffstable.bin 0x10000 $(TargetFile).bin 0x300000 /home/bernd/Programme/Laz-ESP8266/cross/lib/xtensa-freertos/lx106/spiffs.bin"/>
         <CompileReasons Build="False" Run="False"/>
       </ExecuteAfter>
     </Other>

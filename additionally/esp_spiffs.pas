@@ -9,7 +9,7 @@ uses
   esp_log2,
   esp_err;
 
-
+{$PACKRECORDS C}
 type
   esp_err_t = cint;
 
@@ -20,8 +20,8 @@ type
   esp_vfs_spiffs_conf_t = record
     base_path: PChar;
     partition_label: PChar;
-    max_files: size_t;
-    format_if_mount_failed: Boolean;
+    max_files: cint;
+    format_if_mount_failed: ByteBool;
   end;
 
 

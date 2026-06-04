@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="ESP8266"/>
+    <Units>
+      <Unit>
+        <Filename Value="SpiffExample.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="66"/>
+        <CursorPos X="48" Y="83"/>
+        <UsageCount Value="79"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_spiffs.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="10" Y="27"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_log2.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="39"/>
+        <CursorPos X="11" Y="50"/>
+        <UsageCount Value="25"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_err.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="55" Y="29"/>
+        <UsageCount Value="24"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/fmem.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/fpcsrc/rtl/inc/ctypes.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_err.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_log2.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/laz_esp.pas"/>
+        <UnitName Value="Laz_ESP"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="58"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_spiffs.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="129" Column="2" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="132" Column="37" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="43" Column="10" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="51" Column="8" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="75" Column="25" TopLine="62"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="81" Column="15" TopLine="68"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="40" Column="65" TopLine="31"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="90" Column="3" TopLine="76"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="91" Column="8" TopLine="65"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="5"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="45" TopLine="35"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="92" TopLine="79"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="45" TopLine="19"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="40" Column="3" TopLine="28"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="43" Column="4" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="121" Column="7" TopLine="100"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="61" Column="7" TopLine="38"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="114" Column="16" TopLine="97"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="108" Column="2" TopLine="97"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="52" Column="4" TopLine="31"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="55" Column="72" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="99" Column="45" TopLine="73"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="43" Column="29" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="94" Column="65"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="99" Column="4" TopLine="89"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="170" Column="7" TopLine="153"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="159" Column="2" TopLine="116"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="128" Column="14" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="98" Column="76" TopLine="84"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="94" Column="3"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

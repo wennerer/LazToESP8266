@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="ESP8266"/>
+    <Units>
+      <Unit>
+        <Filename Value="SpiffExample.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="13"/>
+        <CursorPos X="50" Y="151"/>
+        <UsageCount Value="169"/>
+        <Bookmarks Count="3">
+          <Item0 X="17" Y="12" Left="1" Top="1"/>
+          <Item1 X="25" Y="49" Left="1" Top="40" ID="1"/>
+          <Item2 X="4" Y="141" Left="1" Top="48" ID="2"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_spiffs.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="10" Y="27"/>
+        <UsageCount Value="17"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_log2.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="39"/>
+        <CursorPos X="11" Y="50"/>
+        <UsageCount Value="17"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_err.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="55" Y="29"/>
+        <UsageCount Value="16"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/fmem.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/fpcsrc/rtl/inc/ctypes.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="87"/>
+        <CursorPos X="3" Y="101"/>
+        <UsageCount Value="19"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_err.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="29" Y="27"/>
+        <UsageCount Value="19"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_log2.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="2"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/laz_esp.pas"/>
+        <UnitName Value="Laz_ESP"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="303"/>
+        <UsageCount Value="4"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_spiffs.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="29"/>
+        <CursorPos X="10" Y="29"/>
+        <UsageCount Value="30"/>
+      </Unit>
+      <Unit>
+        <Filename Value="sdkconfig.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="290"/>
+        <CursorPos Y="317"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_partition.pp"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="39"/>
+        <CursorPos X="3" Y="52"/>
+        <UsageCount Value="20"/>
+        <Bookmarks Count="1">
+          <Item0 X="64" Y="75" Left="1" Top="52" ID="3"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/portmacro.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="15"/>
+        <CursorPos X="3" Y="29"/>
+        <UsageCount Value="19"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/spi_flash.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="57" Y="27"/>
+        <UsageCount Value="18"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_system.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="52"/>
+        <CursorPos X="27" Y="61"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/fpcsrc/rtl/inc/systemh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="109"/>
+        <CursorPos X="3" Y="123"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../esp8266main.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="3" Y="132"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../GitWizzard/GitWizard/gw_frame.pas"/>
+        <ComponentName Value="Frame1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="723"/>
+        <CursorPos X="30" Y="748"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/lazarus/components/ideintf/idemsgintf.pas"/>
+        <UnitName Value="IDEMsgIntf"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="91"/>
+        <CursorPos X="3" Y="105"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/lazarus/components/buildintf/ideexterntoolintf.pas"/>
+        <UnitName Value="IDEExternToolIntf"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="23" Y="10"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../uartmonitor_frame.pas"/>
+        <ComponentName Value="MonitorFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="17"/>
+        <CursorPos X="52" Y="24"/>
+        <UsageCount Value="9"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="3">
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="120" Column="53" TopLine="102"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="63" Column="23" TopLine="50"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="92" Column="63" TopLine="80"/>
+      </Position>
+      <Position>
+        <Filename Value="SpiffExample.lpr"/>
+        <Caret Line="146" Column="65" TopLine="124"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

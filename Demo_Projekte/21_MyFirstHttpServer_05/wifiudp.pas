@@ -54,7 +54,7 @@ begin
  end;
 end;
 
-procedure Send(pvParameters: Pointer);cdecl;
+procedure Send(pvParameters: Pointer);
 var
   rx_buffer : array[0..127] of char;
   addr_str  : array[0..127] of char;

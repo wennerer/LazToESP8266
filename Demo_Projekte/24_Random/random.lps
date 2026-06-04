@@ -7,9 +7,11 @@
       <Unit>
         <Filename Value="random.lpr"/>
         <IsPartOfProject Value="True"/>
+        <UnitName Value="testrandom"/>
         <IsVisibleTab Value="True"/>
-        <CursorPos X="30" Y="25"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="3"/>
+        <CursorPos X="97" Y="14"/>
+        <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -19,8 +21,17 @@
         <CursorPos X="18" Y="30"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/laz_esp.pas"/>
+        <UnitName Value="Laz_ESP"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="69"/>
+        <CursorPos X="13" Y="90"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="1">
+    <JumpHistory HistoryIndex="3">
       <Position>
         <Filename Value="random.lpr"/>
         <Caret Line="23" Column="26" TopLine="3"/>
@@ -28,6 +39,14 @@
       <Position>
         <Filename Value="random.lpr"/>
         <Caret Line="21" Column="22" TopLine="3"/>
+      </Position>
+      <Position>
+        <Filename Value="random.lpr"/>
+        <Caret Line="25" Column="30"/>
+      </Position>
+      <Position>
+        <Filename Value="random.lpr"/>
+        <Caret Line="11" Column="18"/>
       </Position>
     </JumpHistory>
     <RunParams>

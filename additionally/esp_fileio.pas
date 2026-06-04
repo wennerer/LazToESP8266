@@ -63,7 +63,7 @@ begin
  f := fopen(aPath, 'a');
   if f = nil then
   begin
-    ESP_LOGE('FileAppend','%s',[ 'fopen write failed']);
+    ESP_LOGE('%s',' %s',['FileAppend', 'fopen write failed']);
     exit(false);
   end;
  //fprintf(f,aText,LineEnding);
