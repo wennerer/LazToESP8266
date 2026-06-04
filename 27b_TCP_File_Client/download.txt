@@ -1,0 +1,6 @@
+Das ist eine von mir erzeugte Datei
+Zeile 1
+Zeile 2
+Zeile 3
+Zeile 4
+Zeile 5

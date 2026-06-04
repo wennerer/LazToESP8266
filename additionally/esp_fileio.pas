@@ -14,6 +14,7 @@ function fopen(filename, mode: PChar): PFILE; cdecl; external;
 function fclose(f: PFILE): cint; cdecl; external;
 function fprintf(f: PFILE; fmt: PChar): cint; cdecl; varargs; external;
 function fgets(buf: PChar; size: cint; f: PFILE): PChar; cdecl; external;
+function fread(ptr: Pointer;size: SizeUInt;count: SizeUInt;stream: PFILE): SizeUInt; cdecl; external;
 function remove(path: PChar): cint; cdecl; external;
 function unlink(path: PChar): cint; cdecl; external;
 
