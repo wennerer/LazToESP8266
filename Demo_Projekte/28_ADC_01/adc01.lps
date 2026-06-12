@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="ESP8266"/>
+    <Units>
+      <Unit>
+        <Filename Value="adc01.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="4"/>
+        <CursorPos X="11" Y="10"/>
+        <UsageCount Value="140"/>
+        <Bookmarks Count="1">
+          <Item0 Y="20" Left="1" Top="6"/>
+        </Bookmarks>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/laz_esp.pas"/>
+        <UnitName Value="Laz_ESP"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="10" Y="95"/>
+        <UsageCount Value="34"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/adc.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="64" Y="22"/>
+        <UsageCount Value="65"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/freertosconfig.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="77"/>
+        <CursorPos X="37" Y="91"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/task.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="169"/>
+        <CursorPos X="93" Y="181"/>
+        <UsageCount Value="35"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_log2.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3"/>
+        <CursorPos Y="70"/>
+        <UsageCount Value="58"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/dhcpserver.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="50" Y="14"/>
+        <UsageCount Value="28"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/wificonnect2.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/event_groups.pp"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="32" Y="12"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/freertos.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/esp8266-idf/esp_wifi.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="64"/>
+        <CursorPos X="59" Y="7"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/ESP8266_RTOS_SDK/components/esp8266/include/esp_sleep.h"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="19"/>
+        <CursorPos X="53" Y="190"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../../../../../Programme/Laz-ESP8266/cross/units/additionally/esp_sleep.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="31"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="25">
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="84" Column="20" TopLine="59"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="29" Column="6"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="27" Column="47" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="30" Column="26" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="31" Column="34" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="32" Column="56" TopLine="16"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="31" Column="7" TopLine="18"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="32" Column="49" TopLine="18"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="73" Column="19" TopLine="8"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="31" Column="71" TopLine="18"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="33" Column="42" TopLine="15"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="18" Column="35" TopLine="13"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="33" Column="28" TopLine="20"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="28" Column="4"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="9" Column="5"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="51" Column="12" TopLine="39"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="9" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="51" Column="3" TopLine="35"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="52" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="51" Column="3" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="14" Column="12"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="52" Column="5"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="54" Column="3" TopLine="31"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="51" Column="16" TopLine="37"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="2"/>
+      </Position>
+      <Position>
+        <Filename Value="adc01.lpr"/>
+        <Caret Line="22" Column="44"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>
